@@ -34,8 +34,13 @@ namespace ProjectCar.Controllers
         public ActionResult Index()
 
         {
+            var cars = new List<CarEntity>();
+            if (_businessLogic.CheckIfUser())
+                cars = _carRepository.GetWhere(x => x.Id > 0);
+            else 
+                cars = _carRepository.GetWhere(x => x.Id > 0 && x.IsActive);
 
-            return View(_carRepository.GetWhere(x => x.Id > 0));
+            return View(cars);
 
         }
 

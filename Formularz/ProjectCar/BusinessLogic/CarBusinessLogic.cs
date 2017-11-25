@@ -12,10 +12,14 @@ namespace ProjectCar.BusinessLogic
         public string CheckIf()
         {
             string name = "Niezalogowany";
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            if (CheckIfUser())
                 name = HttpContext.Current.User.Identity.Name;
             return name;
         }
+        public bool CheckIfUser()
+        {
+            return HttpContext.Current.User.Identity.IsAuthenticated;
 
+        }
     }
 }

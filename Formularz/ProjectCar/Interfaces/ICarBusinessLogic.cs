@@ -9,5 +9,6 @@ namespace ProjectCar.Interfaces
     public interface ICarBusinessLogic
     {
         string CheckIf();
+        bool CheckIfUser();
     }
 }
