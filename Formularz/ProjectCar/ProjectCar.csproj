@@ -232,6 +232,7 @@
     <Compile Include="Repository\Interfaces\IAbstractRepository.cs" />
     <Compile Include="Repository\Interfaces\ICarRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Models\ViewModels\VMCars.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

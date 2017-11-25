@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ProjectCar.Models;
 using ProjectCar.Repository.Interfaces;
 using ProjectCar.Interfaces;
+using ProjectCar.Models.ViewModels;
 
 namespace ProjectCar.Controllers
 {
@@ -34,13 +35,15 @@ namespace ProjectCar.Controllers
         public ActionResult Index()
 
         {
-            var cars = new List<CarEntity>();
-            if (_businessLogic.CheckIfUser())
-                cars = _carRepository.GetWhere(x => x.Id > 0);
+            var carVM = new VMCars();
+            carVM.CarList = new List<CarEntity>();
+           
+            if (carVM.ShowIF)
+                carVM.CarList = _carRepository.GetWhere(x => x.Id > 0);
             else 
-                cars = _carRepository.GetWhere(x => x.Id > 0 && x.IsActive);
+                carVM.CarList = _carRepository.GetWhere(x => x.Id > 0 && x.IsActive);
 
-            return View(cars);
+            return View(carVM);
 
         }
 
